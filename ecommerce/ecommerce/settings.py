@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles','shop','search','cart'
+    'django.contrib.staticfiles','shop','search','cart','crispy_forms','crispy_bootstrap5'
 ]
 
 MIDDLEWARE = [
@@ -61,11 +61,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'shop.context_processors.links',
+                'cart.context_processor.count',
             ],
         },
     },
 ]
-
+CRISPY_TEMPLATE_PACK='bootstrap5'
 WSGI_APPLICATION = 'ecommerce.wsgi.application'
 
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')

@@ -7,6 +7,9 @@ class Category(models.Model):
     name=models.CharField(max_length=30)
     image=models.ImageField(upload_to="categories")
     description=models.TextField()
+    def __str__(self):
+        return self.name
+
 
 class Product(models.Model):
     name=models.CharField(max_length=30)
@@ -18,6 +21,9 @@ class Product(models.Model):
     created=models.DateTimeField(auto_now_add=True)
     updated=models.DateTimeField(auto_now=True)
     category=models.ForeignKey(Category,on_delete=models.CASCADE,related_name="products")
+
+    def __str__(self):
+        return self.name
 
 
 

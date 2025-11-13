@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+        <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>orders</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                        <li class="breadcrumb-item active">orders</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<h2 class="text-center">your orders </h2>
+
+{% for i in orders %}
+<div class="container mt-3 mb-3 shadow mb-3 mt-5">
+    <strong>order id</strong>:{{ i.order_id }}<br>
+    <strong>order date</strong>:{{ i.order_date }}<br>
+    <strong>total amount</strong>:{{ i.amount }}<br>
+    <hr style="border:1px solid black">
+    <div class="card mb-3" style="max-width: 540px;">
+        {% for j in i.products.all %}
+   <div class="row g-0">
+     <div class="col-md-4">
+      <img src="{{ j.product.image.url }}" class="img-fluid rounded-start" alt="..." style="height:200px;width:200px">
+     </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><strong>name</strong>:{{ j.product.name }}</h5>
+        <p class="card-text"><strong>quantity</strong>:{{ j.product.quantity }}</p>
+        <p class="card-text"><strong>price</strong>:{{ j.product.price }}</p>
+      </div>
+    </div>
+  </div>
+        {% endfor %}
+ </div>
+</div>
+{% endfor %}
+
+
+{% endblock %}

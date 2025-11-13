@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Login</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Login</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!----login form--->
+
+<div class=" container mx-auto text-center mt-5 mb-5  pt-3 pb-3 bg-dark text-light rounded-3" style="border-radius:20px">
+<form method="post" class="w-50 mx-auto">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <div class="d-flex justify-content-center ">
+        <input type="submit" class="btn bg-danger text-light mt-3 mb-3" value="LOGIN">
+    </div>
+</form>
+</div>
+
+
+{% if messages %}
+<ul>
+    {% for i in messages %}
+    <li>{{ i }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
